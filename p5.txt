@@ -1,4 +1,4 @@
- Creación de repositorio para la práctica
+  Creación de repositorio para la práctica
 
 1. Con el navegador, dirígete al repositorio ptavi-p5 en la cuenta del profesor en GitHub1 y realiza un fork, de manera que consigas tener una copia del repositorio en tu cuenta de GitHub. Clona el repositorio que acabas de crear a local para poder editar los archivos. Trabaja a partir de ahora en ese repositorio, sincronizando los cambios que vayas realizando.
 
@@ -39,28 +39,50 @@ Se ha capturado una sesión SIP (archivo sip.cap.gz), que se puede abrir con Wir
 
 5. Analiza las primeras cuatro tramas de la captura nada más arrancar Ekiga.
  ** ¿Qué servicio es el utilizado en estas tramas?
+    DNS proporciona un método para asignar el nombre descriptivo de un equipo o servicio a otros datos asociados a dicho nombre, como una dirección IP.
  ** ¿Cuál es la dirección IP del servidor de nombres del ordenador que ha lanzado Ekiga?
+    80.58.61.250
  ** ¿Qué dirección IP (de ekiga.net) devuelve el servicio de nombres?
+    86.64.162.35
  ** ¿Por qué se pide también para 35.162.64.86.in-addr.arpa?
+    in-addr.arpa es usada por los servidores DNS inversos para la obtención de direcciones IP (o búsqueda DNS inversa).
 
 
 6. A continuación, hay más de una docena de tramas TCP/HTTP.
  ** ¿Podrías decir la URL que se está pidiendo?
+    http://ekiga.net/ip/
  ** ¿Qué user agent (UA) la está pidiendo?
+    Ekiga\r\n
  ** ¿Qué devuelve el servidor?
+    la IP 83.36.48.212
  ** Si lanzamos el navegador web, por ejemplo, Mozilla Firefox, y vamos a la misma URL, ¿qué recibimos? ¿Qué es, entonces, lo que está respondiendo el servidor?
+        Recibimos una dirección IP, que resulta ser la nuestra. El servidor nos devuelve nuestra IP pública.
 
 
 7. Hasta la trama 45 se puede observar una secuencia de tramas del protocolo STUN.
  ** ¿Por qué crees que se hace uso de este protocolo en esta captura? Busca en la Wikipedia.
+        STUN es usado principalmente por teléfonos o software VoIP. Éste incorpora un cliente STUN que envía una petición a un servidor STUN. El servidor STUN informa entonces al cliente de la IP pública de este último y qué puerto ha sido abierto por NAT para permitir el tráfico entrante a la red del cliente.
+        Una vez el cliente ha descubierto su dirección pública, puede comunicar ésta a sus pares. Si la NAT es del tipo Full Cone, cualquier extremo puede iniciar la comunicación; en otro caso, ambos extremos han de iniciar la comunicación simultáneamente.
+
+STUN es útil como complementos de protocolos como SIP. SIP utiliza paquetes UDP para la señalización de tráfico de sonido, vídeo y texto sobre Internet, pero no permite establecer la comunicación cuando los extremos se encuentran detrás de enrutados NAT. Por ello suele usarse STUN en estas aplicaciones, para poder establecer la comunicación.
  ** ¿Estamos tras un NAT?
+        Sí, ya que el servidor STUN informa al cliente de la IP pública de este último y qué puerto ha sido abierto por NAT para permitir el tráfico entrante a la red del cliente.
 
 
 8. La trama 46 es la primera trama SIP. En un entorno como el de Internet, lo habitual es desconocer la dirección IP de la otra parte al realizar una llamada. Por eso, todo usuario registra su localización en un servidor Registrar. El Registrar guarda información sobre los usuarios en un servidor de localización que puede ser utilizado para localizar usuarios.
  ** ¿Qué dirección IP tiene el servidor Registrar?
+        83.36.48.212
  ** ¿A qué puerto (del servidor Registrar) se envían los paquetes SIP?
+        5063
  ** ¿Qué método SIP utiliza el UA para registrarse?
+        REGISTER, informando al servidor de su localización presente.
  ** Además de REGISTER, ¿qué instrucciones SIP entiende el UA?
+        INVITE: Invitación a sesión.
+        ACK: Confirmación de respuesta a INVITE.
+        BYE: Terminación de sesión.
+        CANCEL: Cancela peticiones, pero no termina la sesión.
+        OPTIONS: Pregunta las capacidades de los servidores.
+        INFO: Se utiliza para la señalización durante la sesión.
 
 
 
