@@ -143,10 +143,22 @@ STUN es útil como complementos de protocolos como SIP. SIP utiliza paquetes UDP
 
 12. Vamos a ver más a fondo el intercambio RTP. En Telephony hay una opción RTP. Empecemos mirando los flujos RTP.
  ** ¿Cuántos flujos hay? ¿por qué?
+        Hay dos flujos, uno de audio y uno de video. El payload muestras los dos codec:
+        video: H.261
+        audio: G711
  ** ¿Cuántos paquetes se pierden?
+        0% de paquetes perdidos
  ** ¿Cuál es el valor máximo del delta? ¿Y qué es lo que significa el valor de delta?
+        El valor máximo del Delta en el flujo de video es de 1290.48 ms
+        El valor máximo del Delta en el flujo de audio es de 1290.44 ms
+        El valor de la Delta significa el retardo máximo entre el paquete que te acaba de llegar con respecto al anterior.
  ** ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué quiere decir eso? ¿Estamos ante una conversación de calidad?
-
+        El valor máximo de jitter en el flujo de video es de 183.10 ms
+        El valor máximo de jitter en el flujo de audio es de 119.64 ms
+        El valor medio de jitter en el flujo de video es de 153.24 ms
+        El valor medio de jitter en el flujo de audio es de 42.50 ms
+        El Jitter es la variación de los retardos.
+        No estamos ante una conversación de calidad ya que el valor del delta y de jitter son muy elevados.
 
 13. Elige un paquete RTP de audio. Analiza el flujo de audio en Telephony -> RTP -> Stream Analysis.
  ** ¿Cuánto valen el delta y el jitter para el primer paquete que ha llegado?
