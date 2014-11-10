@@ -195,8 +195,11 @@ STUN es útil como complementos de protocolos como SIP. SIP utiliza paquetes UDP
 
 16. Finalmente, se cierra la aplicación de VozIP.
  ** ¿Por qué aparece una instrucción SIP del tipo REGISTER?
+        Porque envía un REGISTER con Expires: 0 para ser borrado de la lista de clientes registrados.
  ** ¿En qué trama sucede esto?
+        950 pero el servidor pide autentificación y vuelve a enviar en la trama 952.
  ** ¿En qué se diferencia con la instrucción que se utilizó con anterioridad (al principio de la sesión)?
+        En este caso se utiliza para ser borrado de la lista de clientes registrados, ya que el campo Expires: 0
 
 
 
