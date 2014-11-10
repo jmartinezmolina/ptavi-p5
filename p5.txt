@@ -177,8 +177,12 @@ STUN es útil como complementos de protocolos como SIP. SIP utiliza paquetes UDP
 
 14. En Telephony selecciona el menú VoIP calls. Verás que se lista la llamada de voz IP capturada en una ventana emergente. Selecciona esa llamada y pulsa el botón Graph.
  ** ¿Cuánto dura la conversación?
+        20,88 segundos
  ** ¿Cuáles son sus SSRC? ¿Por qué hay varios SSRCs? ¿Hay CSRCs?
-
+        hay dos SSRC, uno para video y otro para audio.
+                Video: SSRC:0x43306582
+                Audio: SSRC:0xBF4AFD37
+        No hay CSRCs
 
 15. Identifica la trama donde se finaliza la conversación.
  ** ¿Qué método SIP se utiliza?
