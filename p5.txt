@@ -87,7 +87,7 @@ STUN es útil como complementos de protocolos como SIP. SIP utiliza paquetes UDP
  ** ¿Se registra con éxito en el primer intento?
         No
  ** ¿Cómo sabemos si el registro se ha realizado correctamente o no?
-        Si el registro se ha realizado correctamente deberiamos ver en la captura: Status: 200 OK (1 bindings)
+        Si el registro se ha realizado correctamente deberíamos ver en la captura: Status: 200 OK (1 bindings)
         Mientras si el no se ha registrado correctamente vemos: Status: 401 Unauthorized (0 bindings)
  ** ¿Podrías identificar las diferencias entre el primer intento y el segundo de registro? (fíjate en el tamaño de los paquetes y mira a qué se debe el cambio)
         Las diferencias vienen en que en el primer registro, el servidor tiene que asegurarse de que el cliente es realmente el cliente, enviando algún tipo de codificación que sólo el cliente que tiene la contraseña, pueda enviarle la respuesta correcta. Por ese motivo el primer REGISTER no autoriza la conexión mientras que en el segundo intento el servidor ya ha comprobado que verdaderamente se encuentra el cliente, ya que el cliente le envía la autentificación requerida.El tamaño de los paquetes se diferencian por dicha información.
@@ -119,7 +119,7 @@ STUN es útil como complementos de protocolos como SIP. SIP utiliza paquetes UDP
 11. Una vez conectado, estudia el intercambio de tramas.
  ** ¿Qué protocolo(s) se utiliza(n)? ¿Para qué sirven estos protocolos?
         RTP y H.261
-        Se utilizan para la transmisión de audio y video en tiempo real.
+        Se utilizan para la transmisión de audio y vídeo en tiempo real.
  ** ¿Cuál es el tamaño de paquete de los mismos?
         Paquetes RTP: 214 bytes
         Paquetes H.261: Varía desde 200 a 1100 bytes
@@ -138,19 +138,19 @@ STUN es útil como complementos de protocolos como SIP. SIP utiliza paquetes UDP
 
 12. Vamos a ver más a fondo el intercambio RTP. En Telephony hay una opción RTP. Empecemos mirando los flujos RTP.
  ** ¿Cuántos flujos hay? ¿por qué?
-        Hay dos flujos, uno de audio y uno de video. El payload muestras los dos codec:
-        video: H.261
+        Hay dos flujos, uno de audio y uno de vídeo. El payload muestras los dos codec:
+        vídeo: H.261
         audio: G711
  ** ¿Cuántos paquetes se pierden?
         0% de paquetes perdidos
  ** ¿Cuál es el valor máximo del delta? ¿Y qué es lo que significa el valor de delta?
-        El valor máximo del Delta en el flujo de video es de 1290.48 ms
+        El valor máximo del Delta en el flujo de vídeo es de 1290.48 ms
         El valor máximo del Delta en el flujo de audio es de 1290.44 ms
         El valor de la Delta significa el retardo máximo entre el paquete que te acaba de llegar con respecto al anterior.
  ** ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué quiere decir eso? ¿Estamos ante una conversación de calidad?
-        El valor máximo de jitter en el flujo de video es de 183.10 ms
+        El valor máximo de jitter en el flujo de vídeo es de 183.10 ms
         El valor máximo de jitter en el flujo de audio es de 119.64 ms
-        El valor medio de jitter en el flujo de video es de 153.24 ms
+        El valor medio de jitter en el flujo de vídeo es de 153.24 ms
         El valor medio de jitter en el flujo de audio es de 42.50 ms
         El Jitter es la variación de los retardos.
         No estamos ante una conversación de calidad ya que el valor del delta y de jitter son muy elevados.
@@ -174,14 +174,14 @@ STUN es útil como complementos de protocolos como SIP. SIP utiliza paquetes UDP
  ** ¿Cuánto dura la conversación?
         20,88 segundos
  ** ¿Cuáles son sus SSRC? ¿Por qué hay varios SSRCs? ¿Hay CSRCs?
-        hay dos SSRC, uno para video y otro para audio.
-                Video: SSRC:0x43306582
+        hay dos SSRC, uno para vídeo y otro para audio.
+                Vídeo: SSRC:0x43306582
                 Audio: SSRC:0xBF4AFD37
         No hay CSRCs
 
 15. Identifica la trama donde se finaliza la conversación.
  ** ¿Qué método SIP se utiliza?
-        Metodo BYE
+        Método BYE
  ** ¿En qué trama(s)?
         924, 925, 927 y 933
  ** ¿Por qué crees que se envía varias veces?
@@ -216,9 +216,9 @@ Captura una sesión SIP de una conversación con el número SIP sip:9999@qxip.ne
 
 18. Identifica las diferencias existentes entre esta conversación y la conversación anterior:
  ** ¿Cuántos flujos tenemos?
-        Tenemos dos flujos en ambas conversaciones, la diferencia es que en la conversación actual exiten 2 flujos de audio (ida y vuelta) mientras que en la conversación anterior hay 2 flujos, uno de audio y otro de video.
+        Tenemos dos flujos en ambas conversaciones, la diferencia es que en la conversación actual existen 2 flujos de audio (ida y vuelta) mientras que en la conversación anterior hay 2 flujos, uno de audio y otro de vídeo.
  ** ¿Cuál es su periodicidad?
-        La misma que en la conversacion anterior, 0.02 seg al tratarse del mismo codec
+        La misma que en la conversación anterior, 0.02 seg al tratarse del mismo codec
  ** ¿Cuánto es el valor máximo del delta y los valores medios y máximo del jitter?
         El valor máximo del delta en el flujo de audio1 es de 24.93 ms
         El valor máximo del delta en el flujo de audio2 es de 24.53 ms
@@ -227,7 +227,7 @@ Captura una sesión SIP de una conversación con el número SIP sip:9999@qxip.ne
         El valor medio de jitter en el flujo de audio1 es de 0.35 ms
         El valor medio de jitter en el flujo de audio2 es de 0.24 ms
  ** ¿Podrías reproducir la conversación desde Wireshark? ¿Cómo? Comprueba que poniendo un valor demasiado pequeño para el buffer de jitter, la conversación puede no tener la calidad necesaria.
-        Sí, pinchando en Telephony - VoIP Calls - Seleccionas lo detectado y pinchas en player - Selecionas los audios y pinchas en Reproducir
+        Sí, pinchando en Telephony - VoIP Calls - Seleccionas lo detectado y pinchas en player - Seleccionas los audios y pinchas en Reproducir
  ** ¿Sabrías decir qué tipo de servicio ofrece sip:9999@qxip.net?
          sip:9999@qxip.net es una radio en streaming.
 
