@@ -95,16 +95,30 @@ STUN es útil como complementos de protocolos como SIP. SIP utiliza paquetes UDP
         Si el registro se ha realizado correctamente deberiamos ver en la captura: Status: 200 OK (1 bindings)
         Mientras si el no se ha registrado correctamente vemos: Status: 401 Unauthorized (0 bindings)
  ** ¿Podrías identificar las diferencias entre el primer intento y el segundo de registro? (fíjate en el tamaño de los paquetes y mira a qué se debe el cambio)
-        Las diferencias vienen en que en el primer registro, el servidor tiene que asegurarse de que el cliente es realmente el cliente, enviando algún tipo de codificación que sólo el cliente que tiene la contraseña, pueda enviarle la respuesta correcta. Por ese motivo el primer REGISTER no autoriza la conexión mientras que en el segundo intento el servidor ya ha comprobado que verdaderamente se encuentra el cliente, ya que el cliente le envía la autorización requerida.
+        Las diferencias vienen en que en el primer registro, el servidor tiene que asegurarse de que el cliente es realmente el cliente, enviando algún tipo de codificación que sólo el cliente que tiene la contraseña, pueda enviarle la respuesta correcta. Por ese motivo el primer REGISTER no autoriza la conexión mientras que en el segundo intento el servidor ya ha comprobado que verdaderamente se encuentra el cliente, ya que el cliente le envía la autentificación requerida.El tamaño de los paquetes se diferencian por dicha información.
  ** ¿Cuánto es el valor del tiempo de expiración de la sesión? Indica las unidades.
         3600 segundos
 
 
 10. Una vez registrados, podemos efectuar una llamada. Vamos a probar con el servicio de eco de Ekiga que nos permite comprobar si nos hemos conectado correctamente. El servicio de eco tiene la dirección sip:500@ekiga.net. Veamos el INVITE de cerca.
  ** ¿Puede verse el nombre del que efectúa la llamada, así como su dirección SIP?
+        Sí, (From: "Gregorio Robles" <sip:grex@ekiga.net>)
  ** ¿Qué es lo que contiene el cuerpo de la trama? ¿En qué formato/protocolo está?
+        El paquete está en formato/protocolo: SIP/SDP
+        Cuerpo de la trama:
+        Session Description Protocol
+        Owner/Creator, session Id
+        Connection Information
+        Time Description, active time
+        Media Description, name and address: audio 5002 RTP/AVP
+        Media Attributes
+        Media Description, name and address: video 5006 RTP/AVP
+        Media Attribute
  ** ¿Tiene éxito el primer intento? ¿Cómo lo sabes?
+        No (Status: 407 Proxy Authentication Required), el servidor pide autentificación al cliente.
  ** ¿En qué se diferencia el segundo INVITE más abajo del primero? ¿A qué crees que se debe esto?
+        Las diferencias vienen en que en el primer INVITE, el servidor tiene que asegurarse de que el cliente es realmente el cliente, enviando algún tipo de codificación que sólo el cliente que tiene la contraseña, pueda enviarle la respuesta correcta. Por ese motivo el primer INVITE no autoriza la conexión mientras que en el segundo intento el servidor ya ha comprobado que verdaderamente se encuentra el cliente, ya que el cliente le envía la autentificación requerida.        
+        
 
 
 11. Una vez conectado, estudia el intercambio de tramas.
