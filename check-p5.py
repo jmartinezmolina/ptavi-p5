@@ -70,6 +70,7 @@ files = ['README.md',
 aleatorio = str(int(random.random() * 1000000))
 
 error = 0
+repo_git = "http://github.com/" + github_dict[sys.argv[1]] + "/ptavi-p5"
 
 print "Clonando el repositorio " + repo_git + "\n"
 os.system('git clone ' + repo_git + ' /tmp/' + aleatorio + ' > /dev/null 2>&1')
