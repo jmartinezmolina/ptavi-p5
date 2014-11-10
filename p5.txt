@@ -71,9 +71,9 @@ STUN es útil como complementos de protocolos como SIP. SIP utiliza paquetes UDP
 
 8. La trama 46 es la primera trama SIP. En un entorno como el de Internet, lo habitual es desconocer la dirección IP de la otra parte al realizar una llamada. Por eso, todo usuario registra su localización en un servidor Registrar. El Registrar guarda información sobre los usuarios en un servidor de localización que puede ser utilizado para localizar usuarios.
  ** ¿Qué dirección IP tiene el servidor Registrar?
-        83.36.48.212
+        86.64.162.35
  ** ¿A qué puerto (del servidor Registrar) se envían los paquetes SIP?
-        5063
+        5060
  ** ¿Qué método SIP utiliza el UA para registrarse?
         REGISTER, informando al servidor de su localización presente.
  ** Además de REGISTER, ¿qué instrucciones SIP entiende el UA?
