@@ -123,11 +123,20 @@ STUN es útil como complementos de protocolos como SIP. SIP utiliza paquetes UDP
 
 11. Una vez conectado, estudia el intercambio de tramas.
  ** ¿Qué protocolo(s) se utiliza(n)? ¿Para qué sirven estos protocolos?
+        RTP y H.261
+        Se utilizan para la transmisión de audio y video en tiempo real.
  ** ¿Cuál es el tamaño de paquete de los mismos?
+        Paquetes RTP: 214 bytes
+        Paquetes H.261: Varía desde 200 a 1100 bytes
  ** ¿Se utilizan bits de padding?
+        No
  ** ¿Cuál es la periodicidad de los paquetes que se envían?
+        160 bytes x 8 bits = 1280 bits
+        1280/64000 = 0.02 s
+        La periodicidad es de 20 milisegundos
  ** ¿Cuántos bits/segundo estamos enviando?
-
+        1280/0.02 = 64000 bits/s
+        
 
 
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
