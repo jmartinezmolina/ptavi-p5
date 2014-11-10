@@ -77,12 +77,7 @@ STUN es útil como complementos de protocolos como SIP. SIP utiliza paquetes UDP
  ** ¿Qué método SIP utiliza el UA para registrarse?
         REGISTER, informando al servidor de su localización presente.
  ** Además de REGISTER, ¿qué instrucciones SIP entiende el UA?
-        INVITE: Invitación a sesión.
-        ACK: Confirmación de respuesta a INVITE.
-        BYE: Terminación de sesión.
-        CANCEL: Cancela peticiones, pero no termina la sesión.
-        OPTIONS: Pregunta las capacidades de los servidores.
-        INFO: Se utiliza para la señalización durante la sesión.
+        Allow: INVITE,ACK,OPTIONS,BYE,CANCEL,NOTIFY,REFER,MESSAGE
 
 
 
@@ -214,7 +209,9 @@ Captura una sesión SIP de una conversación con el número SIP sip:9999@qxip.ne
 
 17. Observa las diferencias en el inicio de la conversación entre el entorno del laboratorio y el del ejercicio anterior:
  ** ¿Es necesario el uso de DNS y STUN? ¿Por qué?
+        No, porque no estamos tras un router NAT.
  ** ¿Son diferentes el registro y la descripción de la sesión?
+        No, lo único que cambia es el nombre del usuario.
 
 
 18. Identifica las diferencias existentes entre esta conversación y la conversación anterior:
