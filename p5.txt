@@ -186,8 +186,11 @@ STUN es útil como complementos de protocolos como SIP. SIP utiliza paquetes UDP
 
 15. Identifica la trama donde se finaliza la conversación.
  ** ¿Qué método SIP se utiliza?
+        Metodo BYE
  ** ¿En qué trama(s)?
+        924, 925, 927 y 933
  ** ¿Por qué crees que se envía varias veces?
+        Porque se espera Status: 200 OK y al no recibirlo lo reenvía, ocurriendo lo mismo varias veces.
 
 
 16. Finalmente, se cierra la aplicación de VozIP.
