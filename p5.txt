@@ -90,9 +90,14 @@ STUN es útil como complementos de protocolos como SIP. SIP utiliza paquetes UDP
 
 9. Fijémonos en las tramas siguientes a la número 46:
  ** ¿Se registra con éxito en el primer intento?
+        No
  ** ¿Cómo sabemos si el registro se ha realizado correctamente o no?
+        Si el registro se ha realizado correctamente deberiamos ver en la captura: Status: 200 OK (1 bindings)
+        Mientras si el no se ha registrado correctamente vemos: Status: 401 Unauthorized (0 bindings)
  ** ¿Podrías identificar las diferencias entre el primer intento y el segundo de registro? (fíjate en el tamaño de los paquetes y mira a qué se debe el cambio)
+        Las diferencias vienen en que en el primer registro, el servidor tiene que asegurarse de que el cliente es realmente el cliente, enviando algún tipo de codificación que sólo el cliente que tiene la contraseña, pueda enviarle la respuesta correcta. Por ese motivo el primer REGISTER no autoriza la conexión mientras que en el segundo intento el servidor ya ha comprobado que verdaderamente se encuentra el cliente, ya que el cliente le envía la autorización requerida.
  ** ¿Cuánto es el valor del tiempo de expiración de la sesión? Indica las unidades.
+        3600 segundos
 
 
 10. Una vez registrados, podemos efectuar una llamada. Vamos a probar con el servicio de eco de Ekiga que nos permite comprobar si nos hemos conectado correctamente. El servicio de eco tiene la dirección sip:500@ekiga.net. Veamos el INVITE de cerca.
