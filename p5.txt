@@ -162,11 +162,17 @@ STUN es útil como complementos de protocolos como SIP. SIP utiliza paquetes UDP
 
 13. Elige un paquete RTP de audio. Analiza el flujo de audio en Telephony -> RTP -> Stream Analysis.
  ** ¿Cuánto valen el delta y el jitter para el primer paquete que ha llegado?
+        Para el primer paquete tanto el delta como el jitter son cero.
  ** ¿Podemos saber si éste es el primer paquete que nos han enviado?
+        No, lo que podemos saber es el primer paquete que hemos recibido pero no el que nos han enviado.
  ** Los valores de jitter son menores de 10ms hasta un paquete dado. ¿Cuál?
+        Hasta el paquete 246 (incluido), el jitter es menor de 10ms. A partir del paquete 247 el jitter es mayor.
  ** ¿A qué se debe el cambio tan brusco del jitter?
+        A una disminución del ancho de banda que a su vez afecta al delta que cambia de 24.03ms a 554.74ms
  ** ¿Es comparable este cambio con el tiempo desde la recepción del paquete anterior? ¿Por qué?
+        No son comparables. Sabemos que si aumenta el delta aumenta el jitter pero no aumentan por igual, el delta aumenta mucho más que el jitter.
  ** ¿Cuál es la dependencia entre el tiempo transcurrido desde el paquete anterior y el valor de jitter?
+        Que cuando uno aumenta el otro aumenta y al igual para la disminución.
 
 
 14. En Telephony selecciona el menú VoIP calls. Verás que se lista la llamada de voz IP capturada en una ventana emergente. Selecciona esa llamada y pulsa el botón Graph.
